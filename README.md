@@ -24,32 +24,51 @@
 
 ---
 
-## 🗂️ Навигация по курсам и семестрам
+## 📂 Детальная структура
+
+<details>
+<summary><b>📁 1 курс</b></summary>
+
+<br/>
+
+| Семестр | Ссылка |
+|:-------:|:-------|
+| **1 семестр** | [🔗 Открыть папку](./1%20курс/1%20семестр) |
+| **2 семестр** | [🔗 Открыть папку](./1%20курс/2%20семестр) |
+
+</details>
+
+<details>
+<summary><b>📁 2 курс</b></summary>
+
+<br/>
+
+| Семестр | Ссылка |
+|:-------:|:-------|
+| **3 семестр** | [🔗 Открыть папку](./2%20курс/3%20семестр) |
+| **4 семестр** | [🔗 Открыть папку](./2%20курс/4%20семестр) |
+
+</details>
+
+<details>
+<summary><b>📁 3 курс</b></summary>
+
+<br/>
+
+| Семестр | Ссылка |
+|:-------:|:-------|
+| **5 сем** | [🔗 Открыть папку](./3%20курс/5%20семестр) |
+| **6 сем** | [🔗 Открыть папку](./3%20курс/6%20семестр) |
+
+</details>
+
+---
+
+## 🛠️ Используемые технологии
 
 <div align="center">
   
-### 1 курс
-<a href="./1_курс/1_семестр">
-  <img src="https://img.shields.io/badge/📖_1_семестр-2D9CDB?style=for-the-badge" />
-</a>
-<a href="./1_курс/2_семестр">
-  <img src="https://img.shields.io/badge/📖_2_семестр-2D9CDB?style=for-the-badge" />
-</a>
+  `Python` • `C++` • `Java` • `C#` • `JavaScript`  
+  `HTML/CSS` • `SQL` • `Git` • `Linux` • `Docker`
 
-### 2 курс
-<a href="./2_курс/3_семестр">
-  <img src="https://img.shields.io/badge/📖_1_семестр-2D9CDB?style=for-the-badge" />
-</a>
-<a href="./2_курс/4_семестр">
-  <img src="https://img.shields.io/badge/📖_2_семестр-2D9CDB?style=for-the-badge" />
-</a>
-
-### 3 курс
-<a href="./3_курс/5_сем">
-  <img src="https://img.shields.io/badge/📖_1_семестр-2D9CDB?style=for-the-badge" />
-</a>
-<a href="./3_курс/6_сем">
-  <img src="https://img.shields.io/badge/📖_2_семестр-2D9CDB?style=for-the-badge" />
-</a>
-  
 </div>
