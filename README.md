@@ -1,5 +1,4 @@
 # MIREA
-тгк:smirnov_a29
 <div align="center">
   
   <img src="https://img.shields.io/badge/РТУ_МИРЭА-09.03.04-blue?style=for-the-badge&logo=googlechrome&logoColor=white" alt="University"/>
@@ -72,3 +71,7 @@
   `HTML/CSS` • `SQL` • `Git` • `Linux` • `Docker`
 
 </div>
+
+📞 Контакты
+<div align="center"> <a href="https://t.me/smirnov_a29"> <img src="https://img.shields.io/badge/Telegram-@smirnov_a29-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" /> </a> <a href="https://t.me/smirnov_a29"> <img src="https://img.shields.io/badge/Telegram_канал-@smirnov_a29-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" /> </a></div>
+<div align="center">
