@@ -70,8 +70,25 @@
   `Python` • `C++` • `Java` • `C#` • `JavaScript`  
   `HTML/CSS` • `SQL` • `Git` • `Linux` • `Docker`
 
+## 📞 Контакты
+
+<div align="center">
+  
+  <a href="https://t.me/smirnov_a29">
+    <img src="https://img.shields.io/badge/Telegram-@smirnov_a29-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" />
+  </a>
+  
+  <a href="https://t.me/smirnov_a29">
+    <img src="https://img.shields.io/badge/Telegram_Канал-@smirnov_a29-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" />
+  </a>
+  
 </div>
 
-📞 Контакты
-<div align="center"> <a href="https://t.me/smirnov_a29"> <img src="https://img.shields.io/badge/Telegram-@smirnov_a29-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" /> </a> <a href="https://t.me/smirnov_a29"> <img src="https://img.shields.io/badge/Telegram_канал-@smirnov_a29-26A5E4?style=for-the-badge&logo=telegram&logoColor=white" /> </a></div>
-<div align="center">
+🌟 Поддержите проект!
+Если этот репозиторий оказался полезным для вас:
+
+<a href="https://github.com/ваш-username/название-репозитория/stargazers"> <img src="https://img.shields.io/badge/⭐_Поставьте_звезду-FFD700?style=for-the-badge&logo=github&logoColor=black" /> </a>
+Это поможет другим студентам найти полезные материалы 🙌
+
+</div>
+<div align="center"> <sub> 📚 РТУ МИРЭА | 09.03.04 Программная инженерия | МОСИТ<br/> 🏛️ Все материалы представлены в образовательных целях </sub></div> ```
