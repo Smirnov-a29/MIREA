@@ -24,4 +24,32 @@
 
 ---
 
-## 🗂️ Структура
+## 🗂️ Навигация по курсам и семестрам
+
+<div align="center">
+  
+### 1 курс
+<a href="./1_курс/1_семестр">
+  <img src="https://img.shields.io/badge/📖_1_семестр-2D9CDB?style=for-the-badge" />
+</a>
+<a href="./1_курс/2_семестр">
+  <img src="https://img.shields.io/badge/📖_2_семестр-2D9CDB?style=for-the-badge" />
+</a>
+
+### 2 курс
+<a href="./2_курс/3_семестр">
+  <img src="https://img.shields.io/badge/📖_1_семестр-2D9CDB?style=for-the-badge" />
+</a>
+<a href="./2_курс/4_семестр">
+  <img src="https://img.shields.io/badge/📖_2_семестр-2D9CDB?style=for-the-badge" />
+</a>
+
+### 3 курс
+<a href="./3_курс/5_сем">
+  <img src="https://img.shields.io/badge/📖_1_семестр-2D9CDB?style=for-the-badge" />
+</a>
+<a href="./3_курс/6_сем">
+  <img src="https://img.shields.io/badge/📖_2_семестр-2D9CDB?style=for-the-badge" />
+</a>
+  
+</div>
