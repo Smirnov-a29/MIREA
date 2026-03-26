@@ -92,7 +92,7 @@
   
   <br/>
   
-  <a href="https://github.com/ваш-username/название-репозитория/stargazers">
+  <a href="https://github.com/Smirnov-a29/MIREA/stargazers">
     <img src="https://img.shields.io/badge/⭐_Поставить_звезду-FFD700?style=for-the-badge&logo=github&logoColor=black" />
   </a>
   
