@@ -8,11 +8,6 @@
   
   **Институт информационных технологий (ИТ)** • **МОСИТ**
   
-  *Коллекция работ по дисциплинам направления «Программная инженерия»*
-  
-  ![GitHub repo size](https://img.shields.io/github/repo-size/ваш-username/название-репозитория?style=flat-square&color=blue)
-  ![GitHub last commit](https://img.shields.io/github/last-commit/ваш-username/название-репозитория?style=flat-square&color=green)
-  
 </div>
 
 ---
