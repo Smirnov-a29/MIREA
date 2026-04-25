@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                  xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                  xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                  xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                  targetNamespace="http://bpmn.io/schema/bpmn"
+                  id="Definitions_1">
+
+  <bpmn:process id="MeetingBookingProcess" name="Бронирование встречи" isExecutable="true">
+
+    <!-- Начало -->
+    <bpmn:startEvent id="StartEvent" name="Открытие приложения">
+      <bpmn:outgoing>Flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+
+    <!-- Авторизация -->
+    <bpmn:userTask id="LoginTask" name="Авторизация пользователя">
+      <bpmn:incoming>Flow_1</bpmn:incoming>
+      <bpmn:outgoing>Flow_2</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- Просмотр встреч -->
+    <bpmn:userTask id="ViewMeetingsTask" name="Просмотр доступных встреч">
+      <bpmn:incoming>Flow_2</bpmn:incoming>
+      <bpmn:outgoing>Flow_3</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- Выбор встречи -->
+    <bpmn:userTask id="SelectMeetingTask" name="Выбрать встречу">
+      <bpmn:incoming>Flow_3</bpmn:incoming>
+      <bpmn:outgoing>Flow_4</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- Выбор локации -->
+    <bpmn:userTask id="SelectLocationTask" name="Выбрать локацию (переговорку)">
+      <bpmn:incoming>Flow_4</bpmn:incoming>
+      <bpmn:outgoing>Flow_5</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- Проверка: место занято? -->
+    <bpmn:exclusiveGateway id="CheckSeatGateway" name="Место занято?">
+      <bpmn:incoming>Flow_5</bpmn:incoming>
+      <bpmn:outgoing>Flow_Yes</bpmn:outgoing>
+      <bpmn:outgoing>Flow_No</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <!-- Поток "Да" - возврат к выбору локации -->
+    <bpmn:sequenceFlow id="Flow_Yes" name="Да" sourceRef="CheckSeatGateway" targetRef="SelectLocationTask" />
+
+    <!-- Поток "Нет" - бронирование -->
+    <bpmn:sequenceFlow id="Flow_No" name="Нет" sourceRef="CheckSeatGateway" targetRef="BookMeetingTask" />
+
+    <!-- Бронирование места -->
+    <bpmn:serviceTask id="BookMeetingTask" name="Забронировать место (создать Order)">
+      <bpmn:incoming>Flow_No</bpmn:incoming>
+      <bpmn:outgoing>Flow_6</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <!-- Проверка оплаты -->
+    <bpmn:exclusiveGateway id="PaymentGateway" name="Заказ оплачен?">
+      <bpmn:incoming>Flow_6</bpmn:incoming>
+      <bpmn:outgoing>Flow_Paid_Yes</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Paid_No</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <!-- Ветка "Нет" - оплата -->
+    <bpmn:userTask id="PayTask" name="Оплатить заказ">
+      <bpmn:incoming>Flow_Paid_No</bpmn:incoming>
+      <bpmn:outgoing>Flow_PayResult</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- Проверка успеха оплаты -->
+    <bpmn:exclusiveGateway id="PaySuccessGateway" name="Оплата успешна?">
+      <bpmn:incoming>Flow_PayResult</bpmn:incoming>
+      <bpmn:outgoing>Flow_Success</bpmn:outgoing>
+      <bpmn:outgoing>Flow_Fail</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+
+    <bpmn:sequenceFlow id="Flow_Success" name="Да" sourceRef="PaySuccessGateway" targetRef="ConfirmOrderTask" />
+    
+    <!-- Отмена заказа -->
+    <bpmn:serviceTask id="CancelOrderTask" name="Отмена заказа">
+      <bpmn:incoming>Flow_Fail</bpmn:incoming>
+      <bpmn:outgoing>Flow_EndCancel</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <bpmn:sequenceFlow id="Flow_Fail" name="Нет" sourceRef="PaySuccessGateway" targetRef="CancelOrderTask" />
+
+    <!-- Ветка "Да" оплачена ранее -->
+    <bpmn:sequenceFlow id="Flow_Paid_Yes" name="Да" sourceRef="PaymentGateway" targetRef="ConfirmOrderTask" />
+    <bpmn:sequenceFlow id="Flow_Paid_No" name="Нет" sourceRef="PaymentGateway" targetRef="PayTask" />
+
+    <!-- Подтверждение заказа -->
+    <bpmn:serviceTask id="ConfirmOrderTask" name="Подтвердить заказ (статус confirmed)">
+      <bpmn:incoming>Flow_Paid_Yes</bpmn:incoming>
+      <bpmn:incoming>Flow_Success</bpmn:incoming>
+      <bpmn:outgoing>Flow_7</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <!-- Отправка уведомления -->
+    <bpmn:serviceTask id="SendNotificationTask" name="Отправка уведомления (Notification)">
+      <bpmn:incoming>Flow_7</bpmn:incoming>
+      <bpmn:outgoing>Flow_8</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <!-- Добавление в календарь -->
+    <bpmn:serviceTask id="AddToCalendarTask" name="Добавить встречу в календарь">
+      <bpmn:incoming>Flow_8</bpmn:incoming>
+      <bpmn:outgoing>Flow_9</bpmn:outgoing>
+    </bpmn:serviceTask>
+
+    <!-- Выдача билета/подтверждения -->
+    <bpmn:userTask id="ReceiveTicketTask" name="Билет/подтверждение получен">
+      <bpmn:incoming>Flow_9</bpmn:incoming>
+      <bpmn:outgoing>Flow_End</bpmn:outgoing>
+    </bpmn:userTask>
+
+    <!-- Конец -->
+    <bpmn:endEvent id="EndEvent" name="Конец">
+      <bpmn:incoming>Flow_End</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <bpmn:endEvent id="EndCancelEvent" name="Отменено">
+      <bpmn:incoming>Flow_EndCancel</bpmn:incoming>
+    </bpmn:endEvent>
+
+    <!-- Sequence flows между основными элементами -->
+    <bpmn:sequenceFlow id="Flow_1" sourceRef="StartEvent" targetRef="LoginTask" />
+    <bpmn:sequenceFlow id="Flow_2" sourceRef="LoginTask" targetRef="ViewMeetingsTask" />
+    <bpmn:sequenceFlow id="Flow_3" sourceRef="ViewMeetingsTask" targetRef="SelectMeetingTask" />
+    <bpmn:sequenceFlow id="Flow_4" sourceRef="SelectMeetingTask" targetRef="SelectLocationTask" />
+    <bpmn:sequenceFlow id="Flow_5" sourceRef="SelectLocationTask" targetRef="CheckSeatGateway" />
+    <bpmn:sequenceFlow id="Flow_6" sourceRef="BookMeetingTask" targetRef="PaymentGateway" />
+    <bpmn:sequenceFlow id="Flow_PayResult" sourceRef="PayTask" targetRef="PaySuccessGateway" />
+    <bpmn:sequenceFlow id="Flow_7" sourceRef="ConfirmOrderTask" targetRef="SendNotificationTask" />
+    <bpmn:sequenceFlow id="Flow_8" sourceRef="SendNotificationTask" targetRef="AddToCalendarTask" />
+    <bpmn:sequenceFlow id="Flow_9" sourceRef="AddToCalendarTask" targetRef="ReceiveTicketTask" />
+    <bpmn:sequenceFlow id="Flow_End" sourceRef="ReceiveTicketTask" targetRef="EndEvent" />
+    <bpmn:sequenceFlow id="Flow_EndCancel" sourceRef="CancelOrderTask" targetRef="EndCancelEvent" />
+
+  </bpmn:process>
+</bpmn:definitions>
